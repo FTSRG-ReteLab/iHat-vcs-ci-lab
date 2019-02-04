@@ -1,4 +1,4 @@
-# Train Speed Controller App
+# Train Speed Controller Application
 
 This is a sample application for the verification laboratory.
 
