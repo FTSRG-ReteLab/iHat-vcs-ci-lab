@@ -1,10 +1,12 @@
+package hu.bme.mit.train.sensor;
+
 import com.google.common.collect.TreeBasedTable;
 import com.google.common.collect.Table;
 
 
 class Tachograph {
 
-	Table<Integer, Integer, Integer> table;
+	public Table<Integer, Integer, Integer> table;
 
 	Tachograph(){
 		table = TreeBasedTable.create();
