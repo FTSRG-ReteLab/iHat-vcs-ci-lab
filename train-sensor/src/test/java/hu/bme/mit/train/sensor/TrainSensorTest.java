@@ -35,6 +35,31 @@ public class TrainSensorTest {
         Assert.assertEquals(sensor.getSpeedLimit(), 600);
         verify(mockUser, times(1)).setAlarmState(true);
     }
+    
+    @Test
+    public void TestSetNegativeSpeed() {
+        sensor.overrideSpeedLimit(-20);
+        Assert.assertEquals(sensor.getSpeedLimit(), 0);
+        verify(mockUser, times(1)).setAlarmState(true);
+    }
+
+    @Test
+    public void TestSetPercentageAlertSpeed() {
+        when(mockController.getReferenceSpeed()).thenReturn(50);
+        sensor.overrideSpeedLimit(20);
+        Assert.assertEquals(sensor.getSpeedLimit(), 20);
+        verify(mockUser, times(1)).setAlarmState(true);
+    }
+
+    @Test
+    public void TestSetNoAlarmSpeed() {
+        sensor.overrideSpeedLimit(20);
+        Assert.assertEquals(sensor.getSpeedLimit(), 20);
+        verify(mockUser, times(0)).setAlarmState(false);
+        verify(mockUser, times(0)).setAlarmState(true);
+    }
+
+
 
 
 }
